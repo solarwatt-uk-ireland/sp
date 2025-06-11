@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html><head><script type="text/javascript" src="./index_files/se-v2.js.download"></script>
+    <script>
+        const getColor = (data, name) => {
+            const c = data.components.find(c => c.name === name);
+            if (!c)
+            {
+                return '#ebefef';
+            }
+            return c.status === 'operational' ? '#2EA484' : '#D70041';
+        }
+        
+        var sp = new StatusPage.page({ page : '6h8f66nl34n5' });
+
+        sp.summary({
+            success : function(data) {
+                document.getElementById("status-mp").style.color = document.getElementById("status-ha").style.color = getColor(data, 'TIH.hems');
+                document.getElementById("status-ic").style.color = getColor(data, 'TIH.installer');
+                document.getElementById("status-an").style.color = getColor(data, 'IoT Ingestion');
+                document.getElementById("status-op").style.color = getColor(data, 'KiwiOS.optimization');
+                document.getElementById("status-ac").style.color = getColor(data, 'Identity Management');
+                document.getElementById("status-overview").innerText = data.status.description ? `Current status: ${data.status.description}` : '';
+            }
+        });
+    </script>
+    </head><body>
+        <div id="res">
+            <div id="status-overview"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service
+                        </th><th>Current Status
+                    </th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SOLARWATT Manager portal</strong></td>
+                        <td class="icon"><div id="status-mp">⬤</div></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SOLARWATT Home app</strong></td>
+                        <td class="icon"><div id="status-ha"">⬤</div></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SOLARWATT Installer center</strong></td>
+                        <td class="icon"><div id="status-ic">⬤</div></td>
+                    </tr>
+                    <tr>
+                        <td>Analytics</td>
+                        <td class="icon"><div id="status-an">⬤</div></td>
+                    </tr>
+                    <tr>
+                        <td>Optimisation</td>
+                        <td class="icon"><div id="status-op">⬤</div></td>
+                    </tr>
+                    <tr>
+                        <td>Accounts</td>
+                        <td class="icon"><div id="status-ac">⬤</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    <style>
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: "Averta Regular","Century Gothic",Avenir,Arial,sans-serif;
+            color: #003339;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-top: 1px solid #003339;
+            border-bottom: 1px solid #003339;
+            min-width: 100%;
+            width: 550px;
+        }
+        
+        table th {
+            background-color: #003339;
+            color: #fff;
+            border-bottom: 1px solid #f0f3f3;
+            text-align: left;
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            unicode-bidi: isolate;
+            border-color: inherit;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            unicode-bidi: isolate;
+            border-color: inherit;
+        }
+
+        strong, th {
+            font-family: "Averta Semibold","Century Gothic",Avenir,Arial,sans-serif;
+            font-weight: 700;
+        }
+
+        table th {
+            padding: 10px 16px;
+        }
+        
+        table td {
+            padding: 16px;
+        }
+
+        table tr th:not(:last-child) {
+            border-right: 1px solid #ebefef;
+        }
+ 
+        table tbody tr:nth-child(odd) {
+            background-color: #f0f3f3;
+        }
+
+        td div {
+            font-size: 21px;
+        }
+
+        .icon {
+            text-align: center;
+            color: #ebefef;
+        }
+
+        #status-overview {
+            padding: 20px 16px;
+            margin: 0 0 20px 0;
+            background-color: #CCDCDE;
+        }
+    </style>
+</body></html>
