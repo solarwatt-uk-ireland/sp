@@ -16,11 +16,12 @@
         sp.summary({
             success : function(data) {
                 document.getElementById("status-mp").style.color = document.getElementById("status-ha").style.color = getColor(data, 'TIH.hems');
-                document.getElementById("status-ic").style.color = getColor(data, 'TIH.installer');
+                document.getElementById("status-ic").style.color = getColor(data, 'KiwiOS.operator');
                 document.getElementById("status-an").style.color = getColor(data, 'IoT Ingestion');
                 document.getElementById("status-op").style.color = getColor(data, 'KiwiOS.optimization');
                 document.getElementById("status-ac").style.color = getColor(data, 'Identity Management');
                 document.getElementById("status-overview").innerText = data.status.description ? `Current status: ${data.status.description}` : '';
+                document.getElementById("status-overview").style.backgroundColor = data.status.description ? '#DFCEC8' : '#D7ECDC';
             }
         });
     </script>
@@ -56,7 +57,7 @@
                         <td class="icon"><div id="status-op">⬤</div></td>
                     </tr>
                     <tr>
-                        <td>Accounts</td>
+                        <td>Login</td>
                         <td class="icon"><div id="status-ac">⬤</div></td>
                     </tr>
                 </tbody>
@@ -84,8 +85,8 @@
             border-spacing: 0;
             border-top: 1px solid #003339;
             border-bottom: 1px solid #003339;
-            min-width: 100%;
-            width: 760px;
+            width: 100vw;
+            max-width: 100%;
         }
         
         table th {
@@ -142,7 +143,6 @@
         #status-overview {
             padding: 20px 16px;
             margin: 0 0 20px 0;
-            background-color: #CCDCDE;
         }
     </style>
 </body></html>
