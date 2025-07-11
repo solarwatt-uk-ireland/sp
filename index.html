@@ -21,7 +21,7 @@
                 document.getElementById("status-op").style.color = getColor(data, 'KiwiOS.optimization');
                 document.getElementById("status-ac").style.color = getColor(data, 'Identity Management');
                 document.getElementById("status-overview").innerText = data.status.description ? `Current status: ${data.status.description}` : '';
-                document.getElementById("status-overview").style.backgroundColor = data.status.description ? '#DFCEC8' : '#D7ECDC';
+                document.getElementById("status-overview").style.backgroundColor = !data.status.description?.equals('All Systems Operational') ? '#DFCEC8' : '#D7ECDC';
             }
         });
     </script>
